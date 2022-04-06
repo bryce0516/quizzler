@@ -34,18 +34,28 @@ class ViewController: UIViewController {
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
-//        if questionNumer < 3 {
-//            questionNumer += 1
-//        } else if questionNumer == 3 {
-//            questionNumer = 0
-//        }
-        var userAnswer = sender.currentTitle
         
-        questionNumer += 1
+        var userAnswer = sender.currentTitle
+        let actualAnswer = quiz[questionNumer][1]
+        
+        
+        if userAnswer == actualAnswer {
+            print("Right!")
+        } else {
+            print("Wrong!")
+        }
+        print("this is count \(quiz.count)")
+        if questionNumer + 1 < quiz.count {
+            questionNumer += 1
+        } else if questionNumer + 1 == 3 {
+            questionNumer = 0
+        }
+        
         updateUI()
     }
     
     func updateUI() {
+        print(questionNumer)
         questionLabel.text = quiz[questionNumer][0]
     }
 }
