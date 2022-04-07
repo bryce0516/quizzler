@@ -58,11 +58,13 @@ class ViewController: UIViewController {
         
         
         if questionNumer + 1 < quiz.count {
+
             questionNumer += 1
         } else {
             questionNumer = 0
         }
         
+
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
     }
     
@@ -71,6 +73,9 @@ class ViewController: UIViewController {
         questionLabel.text = quiz[questionNumer].text
         trueButton.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
+        let percentageProgress = Float(questionNumer + 1) / Float(quiz.count )
+        progressBar.progress = percentageProgress
+        
     }
 }
 
