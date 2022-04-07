@@ -59,16 +59,18 @@ class ViewController: UIViewController {
         
         if questionNumer + 1 < quiz.count {
             questionNumer += 1
-        } else if questionNumer + 1 == 3 {
+        } else {
             questionNumer = 0
         }
         
-        updateUI()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         print(questionNumer)
         questionLabel.text = quiz[questionNumer].text
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
     }
 }
 
